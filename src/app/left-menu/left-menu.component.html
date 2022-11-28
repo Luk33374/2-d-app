@@ -1,9 +1,24 @@
-<p>left-menu works!</p>
-<!-- <mat-radio-group
-  aria-labelledby="example-radio-group-label"
-  class="example-radio-group"
-  [(ngModel)]="favoriteSeason">
-  <mat-radio-button class="example-radio-button" *ngFor="let season of seasons" [value]="season">
-    {{season}}
-  </mat-radio-button>
-</mat-radio-group> -->
+<p>Choose item to place</p>
+<mat-radio-group
+    name="radioOpt1"
+    class="radio-group container"
+    [ngModelOptions]="{standalone: true}"
+    [(ngModel)]="choosedOption">
+    <mat-radio-button class="radio-button" *ngFor="let option of options" [value]="option" name="option">
+        {{option}}
+    </mat-radio-button>
+    <div class="row">
+
+        <label *ngIf="choosedOption.includes('Circle')">Radious: </label>
+        <input [(ngModel)]="r" *ngIf="choosedOption.includes('Circle')" type="number" value=""/>
+        <label> X: </label>
+        <input [(ngModel)]="x" type="number" value=""/>
+        <label> Y: </label>
+        <input [(ngModel)]="y" type="number" value=""/>
+        <label *ngIf="choosedOption.includes('Rectangle') || choosedOption.includes('Rounded')"> Height: </label>
+        <input [(ngModel)]="height"  *ngIf="choosedOption.includes('Rectangle') || choosedOption.includes('Rounded')" type="number" value=""/>
+        <label *ngIf="choosedOption.includes('Rectangle') || choosedOption.includes('Rounded')"> Width: </label>
+        <input [(ngModel)]="width"  *ngIf="choosedOption.includes('Rectangle') || choosedOption.includes('Rounded')" type="number" value=""/>
+        <button (click)="addElement()" class="primary mt-2" >Add: {{choosedOption}}</button>
+    </div>
+</mat-radio-group>
