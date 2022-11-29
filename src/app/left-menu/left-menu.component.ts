@@ -11,7 +11,7 @@ import { CanvasComponent } from '../canvas/canvas.component';
 export class LeftMenuComponent implements OnInit {
 
   objectPlaced: ObjectOnCanvas[] = [];
-  choosedOption: TypeOfObject=TypeOfObject.Circle;
+  choosedOption: TypeOfObject=TypeOfObject.None;
   x: number=0;
   y: number=0;
   height: number=0;
@@ -54,7 +54,8 @@ export class LeftMenuComponent implements OnInit {
 export enum TypeOfObject {
   Circle = "Circle",
   Rectangle = "Rectangle",
-  Rounded = "Rounded"
+  Rounded = "Rounded",
+  None = "None"
 }
 
 export class ObjectOnCanvas{

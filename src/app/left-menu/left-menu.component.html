@@ -8,17 +8,46 @@
         {{option}}
     </mat-radio-button>
     <div class="row">
+        <div *ngIf="!choosedOption.includes('None')">
+            <mat-form-field class="example-form-field">
+                <mat-label>X:</mat-label>
+                <input matInput type="text" [(ngModel)]="x">
+                <button *ngIf="x" matSuffix mat-icon-button aria-label="Clear" (click)="x=0">
+                X
+                </button>
+            </mat-form-field>
+            <mat-form-field class="example-form-field">
+                <mat-label>Y:</mat-label>
+                <input matInput type="text" [(ngModel)]="y">
+                <button *ngIf="y" matSuffix mat-icon-button aria-label="Clear" (click)="y=0">
+                X
+                </button>
+            </mat-form-field>
 
-        <label *ngIf="choosedOption.includes('Circle')">Radious: </label>
-        <input [(ngModel)]="r" *ngIf="choosedOption.includes('Circle')" type="number" value=""/>
-        <label> X: </label>
-        <input [(ngModel)]="x" type="number" value=""/>
-        <label> Y: </label>
-        <input [(ngModel)]="y" type="number" value=""/>
-        <label *ngIf="choosedOption.includes('Rectangle') || choosedOption.includes('Rounded')"> Height: </label>
-        <input [(ngModel)]="height"  *ngIf="choosedOption.includes('Rectangle') || choosedOption.includes('Rounded')" type="number" value=""/>
-        <label *ngIf="choosedOption.includes('Rectangle') || choosedOption.includes('Rounded')"> Width: </label>
-        <input [(ngModel)]="width"  *ngIf="choosedOption.includes('Rectangle') || choosedOption.includes('Rounded')" type="number" value=""/>
+            <mat-form-field class="example-form-field" *ngIf="choosedOption.includes('Circle')">
+                <mat-label>Radious</mat-label>
+                <input matInput type="text" [(ngModel)]="r">
+                <button *ngIf="r" matSuffix mat-icon-button aria-label="Clear" (click)="r=0">
+                X
+                </button>
+            </mat-form-field>
+        </div>
+        <div class="width-100" *ngIf="choosedOption.includes('Rectangle') || choosedOption.includes('Rounded')">
+            <mat-form-field class="example-form-field">
+                <mat-label>Height:</mat-label>
+                <input matInput type="text" [(ngModel)]="height">
+                <button *ngIf="height" matSuffix mat-icon-button aria-label="Clear" (click)="height=0">
+                X
+                </button>
+            </mat-form-field>
+            <mat-form-field class="example-form-field">
+                <mat-label>Width:</mat-label>
+                <input matInput type="text" [(ngModel)]="width">
+                <button *ngIf="width" matSuffix mat-icon-button aria-label="Clear" (click)="width=0">
+                X
+                </button>
+            </mat-form-field>
+        </div>
         <button (click)="addElement()" class="primary mt-2" >Add: {{choosedOption}}</button>
     </div>
 </mat-radio-group>

@@ -6,6 +6,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { LeftMenuComponent } from './left-menu/left-menu.component';
 import { CanvasComponent } from './canvas/canvas.component';
 import { MatRadioModule } from '@angular/material/radio';
+import { MatInputModule } from '@angular/material/input';
 import { FormsModule } from '@angular/forms';
 
 @NgModule({
@@ -18,6 +19,7 @@ import { FormsModule } from '@angular/forms';
     BrowserModule,
     NgbModule,
     MatRadioModule,
+    MatInputModule,
     FormsModule
   ],
   providers: [],
