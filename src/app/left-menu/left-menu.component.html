@@ -11,7 +11,7 @@
         <div *ngIf="!choosedOption.includes('None')">
             <mat-form-field class="example-form-field">
                 <mat-label>X:</mat-label>
-                <input matInput type="text" [(ngModel)]="x">
+                <input matInput type="text" [(ngModel)]="x" value="">
                 <button *ngIf="x" matSuffix mat-icon-button aria-label="Clear" (click)="x=0">
                 X
                 </button>

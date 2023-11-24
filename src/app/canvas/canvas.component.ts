@@ -21,23 +21,29 @@ export class CanvasComponent {
       switch(element.typeOfObject){
         case TypeOfObject.Circle:{
           var circle = element as Circle;
-          ctx?.beginPath();
-          ctx?.arc(circle.x,circle.y,circle.radius,0,2*Math.PI);
-          ctx?.stroke();
+          if(circle.radius&&circle.x&&circle.y){
+            ctx?.beginPath();
+            ctx?.arc(circle.x,circle.y,circle.radius,0,2*Math.PI);
+            ctx?.stroke();
+          }
           break;
         }
         case TypeOfObject.Rectangle:{
           var rectangle = element as Rectangle;
-          ctx?.beginPath();
-          ctx?.rect(rectangle.x,rectangle.y,rectangle.width,rectangle.height);
-          ctx?.stroke();
+          if(rectangle.height&&rectangle.width&&rectangle.x&&rectangle.y){
+            ctx?.beginPath();
+            ctx?.rect(rectangle.x,rectangle.y,rectangle.width,rectangle.height);
+            ctx?.stroke();
+          }
           break;
         }
         case TypeOfObject.Rounded:{
           var rounded = element as Rectangle;
-          ctx?.beginPath();
-          ctx?.rect(rounded.x,rounded.y,rounded.width,rounded.height);
-          ctx?.stroke();
+          if(rounded.height&&rounded.width&&rounded.x&&rounded.y){
+            ctx?.beginPath();
+            ctx?.rect(rounded.x,rounded.y,rounded.width,rounded.height);
+            ctx?.stroke();
+          }
           break;
         }
       }

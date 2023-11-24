@@ -12,11 +12,11 @@ export class LeftMenuComponent implements OnInit {
 
   objectPlaced: ObjectOnCanvas[] = [];
   choosedOption: TypeOfObject=TypeOfObject.None;
-  x: number=0;
-  y: number=0;
-  height: number=0;
-  width: number=0;
-  r: number=0;
+  x?: number;
+  y?: number;
+  height?: number;
+  width?: number;
+  r?: number;
   options: TypeOfObject[] = [ TypeOfObject.Circle, TypeOfObject.Rectangle, TypeOfObject.Rounded ];
   constructor(private modalService: NgbModal) {
   
@@ -71,21 +71,25 @@ export class ObjectOnCanvas{
 }
 
 export class Rectangle extends ObjectOnCanvas{
-  height: number;
-  width: number;
+  height?: number;
+  width?: number;
 
-  constructor(x: number, y: number, type: TypeOfObject,height: number, width: number){
-    super(x,y,type);
-    this.width = width;
-    this.height = height;
+  constructor(x?: number, y?: number, type?: TypeOfObject, height?: number, width?: number){
+    if(x&&y&&type&&height&&width){
+      super(x,y,type);
+      this.width = width;
+      this.height = height;
+    }
   }
 }
 
 export class Circle extends ObjectOnCanvas{
-  radius: number;
+  radius?: number;
 
-  constructor(x: number, y: number, type: TypeOfObject,radius: number){
-    super(x,y,type);
-    this.radius = radius;
+  constructor(x?: number, y?: number, type?: TypeOfObject,radius?: number){
+    if(x&&y&&radius&&type){
+      super(x,y,type);
+      this.radius = radius;
+    }
   }
 }
