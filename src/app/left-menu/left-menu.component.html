@@ -24,7 +24,7 @@
                 </button>
             </mat-form-field>
 
-            <mat-form-field class="example-form-field" *ngIf="choosedOption.includes('Circle')">
+            <mat-form-field class="example-form-field" *ngIf="choosedOption.includes('Circle') || choosedOption.includes('Rounded')">
                 <mat-label>Radious</mat-label>
                 <input matInput type="text" [(ngModel)]="r">
                 <button *ngIf="r" matSuffix mat-icon-button aria-label="Clear" (click)="r=0">

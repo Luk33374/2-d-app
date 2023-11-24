@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit } from '@angular/core';
-import { Circle, ObjectOnCanvas, Rectangle, TypeOfObject } from '../left-menu/left-menu.component';
+import { Circle, ObjectOnCanvas, Rectangle, Rounded, TypeOfObject } from '../left-menu/left-menu.component';
 
 @Component({
   selector: 'app-canvas',
@@ -38,10 +38,10 @@ export class CanvasComponent {
           break;
         }
         case TypeOfObject.Rounded:{
-          var rounded = element as Rectangle;
+          var rounded = element as Rounded;
           if(rounded.height&&rounded.width&&rounded.x&&rounded.y){
             ctx?.beginPath();
-            ctx?.rect(rounded.x,rounded.y,rounded.width,rounded.height);
+            ctx?.roundRect(rounded.x,rounded.y,rounded.width,rounded.height,rounded.cornerRadious);
             ctx?.stroke();
           }
           break;

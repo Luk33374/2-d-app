@@ -12,11 +12,11 @@ export class LeftMenuComponent implements OnInit {
 
   objectPlaced: ObjectOnCanvas[] = [];
   choosedOption: TypeOfObject=TypeOfObject.None;
-  x?: number;
-  y?: number;
-  height?: number;
-  width?: number;
-  r?: number;
+  x =0 ;
+  y = 0;
+  height = 0;
+  width = 0;
+  r = 0;
   options: TypeOfObject[] = [ TypeOfObject.Circle, TypeOfObject.Rectangle, TypeOfObject.Rounded ];
   constructor(private modalService: NgbModal) {
   
@@ -39,7 +39,7 @@ export class LeftMenuComponent implements OnInit {
         }
 
         case TypeOfObject.Rounded: {
-          this.objectPlaced.push(new Rectangle(this.x,this.y,this.choosedOption,this.height,this.width));
+          this.objectPlaced.push(new Rounded(this.x,this.y,this.choosedOption,this.height,this.width,this.r));
           break;
         }
     }
@@ -71,25 +71,30 @@ export class ObjectOnCanvas{
 }
 
 export class Rectangle extends ObjectOnCanvas{
-  height?: number;
-  width?: number;
+  height: number;
+  width: number;
 
-  constructor(x?: number, y?: number, type?: TypeOfObject, height?: number, width?: number){
-    if(x&&y&&type&&height&&width){
+  constructor(x: number, y: number, type: TypeOfObject, height: number, width: number){
       super(x,y,type);
       this.width = width;
       this.height = height;
-    }
   }
 }
 
-export class Circle extends ObjectOnCanvas{
-  radius?: number;
+export class Rounded extends Rectangle{
+  cornerRadious: number;
+  constructor(x: number, y: number, type: TypeOfObject, height: number, width: number, cornerRadious: number){
+    super(x,y,type,height,width);
+    this.cornerRadious = cornerRadious;
+    }
+  }
 
-  constructor(x?: number, y?: number, type?: TypeOfObject,radius?: number){
-    if(x&&y&&radius&&type){
+
+export class Circle extends ObjectOnCanvas{
+  radius: number;
+
+  constructor(x: number, y: number, type: TypeOfObject,radius: number){
       super(x,y,type);
       this.radius = radius;
-    }
   }
 }
