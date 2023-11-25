@@ -1,4 +1,7 @@
 <mat-list role="list">
+    <div *ngIf="allItemsOnCanvas.length === 0">
+        No elements present
+    </div>
     <ng-container *ngFor="let item of allItemsOnCanvas">
         <app-list-item [item]="item"></app-list-item>
     </ng-container>

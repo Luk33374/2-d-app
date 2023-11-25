@@ -1,8 +1,14 @@
 <div class="container">
   <div class="row mt-5">
     <div class="col-sm-3 border">
-      <app-left-menu></app-left-menu>
-      <app-elements></app-elements>
+      <mat-tab-group>
+        <mat-tab label="Add component">
+          <app-left-menu></app-left-menu>
+        </mat-tab>
+        <mat-tab label="List">
+          <app-elements></app-elements>
+        </mat-tab>
+      </mat-tab-group>
     </div>
     <div class="col-sm-7 border">
       <app-canvas></app-canvas>
