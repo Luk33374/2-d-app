@@ -1,6 +1,7 @@
-import { Component, EventEmitter, NgModule, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, NgModule, OnInit, Output, inject } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { CanvasComponent } from '../canvas/canvas.component';
+import { ItemService } from '../services/item-service.service';
 
 @Component({
   selector: 'app-left-menu',
@@ -10,7 +11,8 @@ import { CanvasComponent } from '../canvas/canvas.component';
 
 export class LeftMenuComponent implements OnInit {
 
-  objectPlaced: ObjectOnCanvas[] = [];
+  // objectPlaced: ObjectOnCanvas[] = [];
+  #itemsService = inject(ItemService);
   choosedOption: TypeOfObject=TypeOfObject.None;
   x =0 ;
   y = 0;
@@ -29,21 +31,21 @@ export class LeftMenuComponent implements OnInit {
   public addElement(): void{
     switch(this.choosedOption){
         case TypeOfObject.Circle:{
-          this.objectPlaced.push(new Circle(this.x,this.y,this.choosedOption,this.r));
+          this.#itemsService.addItemToCanvas(new Circle(this.x,this.y,this.choosedOption,this.r));
           break;
         }
 
         case TypeOfObject.Rectangle: {
-          this.objectPlaced.push(new Rectangle(this.x,this.y,this.choosedOption,this.height,this.width));
+          this.#itemsService.addItemToCanvas(new Rectangle(this.x,this.y,this.choosedOption,this.height,this.width));
           break;
         }
 
         case TypeOfObject.Rounded: {
-          this.objectPlaced.push(new Rounded(this.x,this.y,this.choosedOption,this.height,this.width,this.r));
+          this.#itemsService.addItemToCanvas(new Rounded(this.x,this.y,this.choosedOption,this.height,this.width,this.r));
           break;
         }
     }
-      CanvasComponent.drawObjects(this.objectPlaced);
+      //CanvasComponent.drawObjects(this.#itemsService.allItemsOnCanvas());
   }
 
   ngOnInit(): void {

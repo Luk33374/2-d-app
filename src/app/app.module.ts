@@ -8,6 +8,8 @@ import { CanvasComponent } from './canvas/canvas.component';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatInputModule } from '@angular/material/input';
 import { FormsModule } from '@angular/forms';
+import { ElementsComponent } from './elements-list/elements/elements.component';
+import { ListItemComponent } from './elements-list/list-item/list-item/list-item.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import { FormsModule } from '@angular/forms';
     NgbModule,
     MatRadioModule,
     MatInputModule,
-    FormsModule
+    FormsModule,
+    ElementsComponent,
+    ListItemComponent
   ],
   providers: [],
   bootstrap: [AppComponent]

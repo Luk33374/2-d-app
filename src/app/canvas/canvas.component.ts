@@ -15,9 +15,9 @@ export class CanvasComponent {
   public static drawObjects(objecttoPlace: ObjectOnCanvas[]): void{
     var c = document.getElementById("myCanvas") as HTMLCanvasElement | null;
     var ctx = c?.getContext("2d");
-    
-
+    ctx?.clearRect(0,0,1000,1000);
     objecttoPlace.forEach( element =>{
+      console.log(element);
       switch(element.typeOfObject){
         case TypeOfObject.Circle:{
           var circle = element as Circle;
